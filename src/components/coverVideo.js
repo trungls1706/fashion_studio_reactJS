@@ -8,16 +8,80 @@ const VideoContainer = styled.section`
   height: 100vh;
 
   video {
-    width: "100%";
-    height: "100%";
-    object-fit: cover; 
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+`;
+
+const DarkOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  z-index: 1;
+  background-color: ${(props) => `rgba(${props.theme.bodyRgba},0.6)`};
+`;
+
+const Title = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  z-index: 5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${(props) => props.theme.text};
+  flex-direction: column;
+
+  div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  h1 {
+    text-shadow: 1px 1px 1px props.theme.body;
+    font-family: "Kaushan Script";
+    font-size: ${(props) => props.theme.fontBig};
+  }
+
+  h2 {
+    text-shadow: 1px 1px 1px props.theme.body;
+    font-family: "Sirin Stencil";
+    font-size: ${(props) => props.theme.fontlg};
+    font-weight: 300;
+    text-transform: capitalize;
   }
 `;
 
 const CoverVideo = () => {
   return (
     <VideoContainer>
-      <video src={MainVideo} controls></video>
+      <DarkOverlay />
+      <Title>
+        <div>
+          <h1 data-scroll data-scroll-delay="0.13" data-scroll-speed="4">
+            W
+          </h1>
+          <h1 data-scroll data-scroll-delay="0.09" data-scroll-speed="4">
+            i
+          </h1>
+          <h1 data-scroll data-scroll-delay="0.06" data-scroll-speed="4">
+            b
+          </h1>
+          <h1 data-scroll data-scroll-delay="0.04" data-scroll-speed="4">
+            e
+          </h1>
+        </div>
+        <h2>Inspire, Create, Belive</h2>
+      </Title>
+      <video src={MainVideo} typeof="video/mp4" autoPlay muted loop></video>
     </VideoContainer>
   );
 };
